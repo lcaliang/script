@@ -1,4 +1,4 @@
-#!/bin/awk -f
+#!/usr/bin/awk -f
 #
 # modify input JB.patch generate by divpatch.awk to JBOK.patch
 #
@@ -19,16 +19,11 @@ BEGIN {system("rm -f 'JBOK.patch'")}
     print >> "JBOK.patch"
     hit = 1 
 }
-/^\+\+\+ / && NF == 2{
+(/^\+\+\+ / || /^--- a/) && NF == 2{
     $2 = sinsert($2,repo)
     print >> "JBOK.patch"
     hit = 1
 } 
-/^--- a/ && NF == 2{
-    $2 = sinsert($2,repo)
-    print >> "JBOK.patch"
-    hit = 1
-}
 {
    if (hit == 0){
        print >> "JBOK.patch"
