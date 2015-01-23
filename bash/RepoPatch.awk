@@ -8,7 +8,7 @@ function sinsert(sorign,ssub) {
     sorign = apre ssub aend
     return sorign
 }
-BEGIN {rm -f "JBOK.patch"}
+BEGIN {system("rm -f 'JBOK.patch'")}
 /^project / && NF == 2 {
     repo = $2
     hit = 0

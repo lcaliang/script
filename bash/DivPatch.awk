@@ -7,12 +7,14 @@
     #print $2
     repo = $2
 }
+BEGIN {
+    system("rm -f 'kernel.patch'")
+    system("rm -f 'JB.patch'")
+}
 {
     if (match(repo,/kernel\//)){
-       rm -f "kernel.patch"
        print >> "kernel.patch"
     }else{
-       rm -f "JB.patch"
        print >> "JB.patch"
     }
 }
