@@ -1,11 +1,9 @@
-#sed for repo patch it
-:top
+#sed -f bash/reoppatch.awk testcase/20141029-20141222.patch
 /^project kernel/,/^project /{
 w kernel.patch
 d
-b top
+n
 }
 {
 w JB.patch
 }
-
